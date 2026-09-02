@@ -110,169 +110,170 @@
         /* =====================================================
            PROFILE PHOTO CARD
         ====================================================== */
-
+        
         .profile-photo-card {
             position: relative;
+        
             min-height: 100%;
+        
             display: flex;
             align-items: center;
             justify-content: center;
+        
             overflow: hidden;
+        
+            box-sizing: border-box;
         }
-
-
+        
+        
         /* =====================================================
            PHOTO FRAME
         ====================================================== */
-
+        
         .profile-photo-frame {
             position: relative;
-
-            width: min(100%, 300px);
-
+        
+            width: 300px;
+            max-width: 100%;
+        
             aspect-ratio: 0.78;
-
-            overflow: hidden;
-
-            /*
-             * Bentuk arch.
-             * Bagian atas sangat membulat,
-             * bagian bawah lebih sedikit membulat.
-             */
+        
+            box-sizing: border-box;
+        
+            padding: 8px;
+        
+            background: #ffffff;
+        
+            border: 2px solid #2563eb;
+        
             border-radius:
                 150px 150px
                 24px 24px;
-
-            background: #ffffff;
-
-            border: 2px solid #2563eb;
-
-            padding: 8px;
-
+        
+            overflow: hidden;
+        
             box-shadow:
                 0 12px 30px rgba(15, 23, 42, 0.12);
+        
+            /* PENTING:
+               memastikan frame berada tepat di tengah */
+            margin-left: auto;
+            margin-right: auto;
         }
-
-
+        
+        
+        /* =====================================================
+           PHOTO
+        ====================================================== */
+        
         .profile-photo-frame img {
+            display: block;
+        
             width: 100%;
             height: 100%;
-
-            display: block;
-
+        
+            box-sizing: border-box;
+        
             object-fit: cover;
-
+        
             /*
-             * Fokus ke kepala dan tubuh.
-             */
-            object-position: center top;
-
+               Foto tetap lurus dan posisi horizontal
+               benar-benar berada di tengah.
+            */
+            object-position: 50% 0%;
+        
+            margin: 0;
+            padding: 0;
+        
+            border: 0;
+        
             border-radius:
                 140px 140px
                 18px 18px;
+        
+            transform: none;
         }
-
-
+        
+        
         /* =====================================================
            PHOTO DECORATION
         ====================================================== */
-
+        
         .profile-photo-card::before {
             content: "";
-
+        
             position: absolute;
-
+        
             width: 90px;
             height: 90px;
-
+        
             top: 24px;
             left: 24px;
-
+        
             background-image:
                 radial-gradient(
                     #bfdbfe 1.5px,
                     transparent 1.5px
                 );
-
+        
             background-size: 12px 12px;
-
+        
             opacity: 0.7;
+        
+            pointer-events: none;
         }
-
-
+        
+        
         .profile-photo-card::after {
             content: "✦";
-
+        
             position: absolute;
-
+        
             right: 28px;
             bottom: 28px;
-
+        
             width: 38px;
             height: 38px;
-
+        
             display: flex;
             align-items: center;
             justify-content: center;
-
+        
             border-radius: 12px;
-
+        
             background: white;
-
+        
             color: #2563eb;
-
+        
             font-size: 20px;
-
+        
             box-shadow:
                 0 5px 15px rgba(15, 23, 42, 0.12);
+        
+            pointer-events: none;
         }
-
-
-        /* =====================================================
-           PDF
-        ====================================================== */
-
-        .pdf-frame {
-            width: 100%;
-
-            min-height: 650px;
-
-            border: 1px solid #e2e8f0;
-
-            border-radius: 10px;
-
-            background: white;
-        }
-
-
+        
+        
         /* =====================================================
            RESPONSIVE
         ====================================================== */
-
+        
         @media (max-width: 1023px) {
-
-            .pdf-frame {
-                min-height: 600px;
-            }
-
+        
             .profile-photo-frame {
-                width: min(100%, 280px);
+                width: 280px;
             }
-
+        
         }
 
 
-        @media (max-width: 767px) {
+@media (max-width: 767px) {
 
-            .pdf-frame {
-                min-height: 500px;
-            }
+    .profile-photo-frame {
+        width: 260px;
+    }
 
-            .profile-photo-frame {
-                width: min(100%, 260px);
-            }
-
-        }
+}
 
     </style>
 </head>
