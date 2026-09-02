@@ -1,0 +1,3783 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>E-Portfolio | Maulana Faqihnafidin</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- FontAwesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ====================================================== */
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+
+        /* =====================================================
+           SECTION NAVIGATION
+        ====================================================== */
+
+        .section-content {
+            display: none;
+            animation: fadeIn 0.35s ease-out forwards;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =====================================================
+           NAVBAR ACTIVE STATE
+        ====================================================== */
+
+        .nav-link.active {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           SCROLLBAR
+        ====================================================== */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+
+        /* =====================================================
+           ACCORDION
+        ====================================================== */
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition:
+                max-height 0.3s ease-out,
+                padding 0.3s ease;
+        }
+
+
+        /* =====================================================
+           PROFILE PHOTO CARD
+        ====================================================== */
+
+        .profile-photo-card {
+            position: relative;
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+           PHOTO FRAME
+        ====================================================== */
+
+        .profile-photo-frame {
+            position: relative;
+
+            width: min(100%, 300px);
+
+            aspect-ratio: 0.78;
+
+            overflow: hidden;
+
+            /*
+             * Bentuk arch.
+             * Bagian atas sangat membulat,
+             * bagian bawah lebih sedikit membulat.
+             */
+            border-radius:
+                150px 150px
+                24px 24px;
+
+            background: #ffffff;
+
+            border: 2px solid #2563eb;
+
+            padding: 8px;
+
+            box-shadow:
+                0 12px 30px rgba(15, 23, 42, 0.12);
+        }
+
+
+        .profile-photo-frame img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            /*
+             * Fokus ke kepala dan tubuh.
+             */
+            object-position: center top;
+
+            border-radius:
+                140px 140px
+                18px 18px;
+        }
+
+
+        /* =====================================================
+           PHOTO DECORATION
+        ====================================================== */
+
+        .profile-photo-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 90px;
+            height: 90px;
+
+            top: 24px;
+            left: 24px;
+
+            background-image:
+                radial-gradient(
+                    #bfdbfe 1.5px,
+                    transparent 1.5px
+                );
+
+            background-size: 12px 12px;
+
+            opacity: 0.7;
+        }
+
+
+        .profile-photo-card::after {
+            content: "✦";
+
+            position: absolute;
+
+            right: 28px;
+            bottom: 28px;
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: #2563eb;
+
+            font-size: 20px;
+
+            box-shadow:
+                0 5px 15px rgba(15, 23, 42, 0.12);
+        }
+
+
+        /* =====================================================
+           PDF
+        ====================================================== */
+
+        .pdf-frame {
+            width: 100%;
+
+            min-height: 650px;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 10px;
+
+            background: white;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 1023px) {
+
+            .pdf-frame {
+                min-height: 600px;
+            }
+
+            .profile-photo-frame {
+                width: min(100%, 280px);
+            }
+
+        }
+
+
+        @media (max-width: 767px) {
+
+            .pdf-frame {
+                min-height: 500px;
+            }
+
+            .profile-photo-frame {
+                width: min(100%, 260px);
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body class="text-slate-800 antialiased">
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex justify-between items-center h-16">
+
+
+                <!-- LOGO -->
+                <div class="flex items-center min-w-0">
+
+                    <div
+                        class="
+                            w-10 h-10
+                            bg-blue-600
+                            rounded-lg
+                            flex items-center justify-center
+                            text-white
+                            font-bold
+                            text-xl
+                            mr-3
+                            shadow-md
+                            flex-shrink-0
+                        "
+                    >
+                        MF
+                    </div>
+
+
+                    <span
+                        class="
+                            font-bold
+                            text-xl
+                            tracking-tight
+                            text-slate-800
+                            whitespace-nowrap
+                        "
+                    >
+                        E-Portfolio PJOK
+                    </span>
+
+                </div>
+
+
+                <!-- DESKTOP MENU -->
+                <div class="hidden lg:flex space-x-4 items-center">
+
+                    <button
+                        onclick="showSection('profil')"
+                        class="
+                            nav-link active
+                            text-slate-600
+                            hover:text-blue-600
+                            px-2 py-5
+                            text-sm
+                            font-medium
+                            transition-colors
+                        "
+                    >
+                        Profil
+                    </button>
+
+
+                    <button
+                        onclick="showSection('modul')"
+                        class="
+                            nav-link
+                            text-slate-600
+                            hover:text-blue-600
+                            px-2 py-5
+                            text-sm
+                            font-medium
+                            transition-colors
+                        "
+                    >
+                        Modul Ajar
+                    </button>
+
+
+                    <button
+                        onclick="showSection('materi')"
+                        class="
+                            nav-link
+                            text-slate-600
+                            hover:text-blue-600
+                            px-2 py-5
+                            text-sm
+                            font-medium
+                            transition-colors
+                        "
+                    >
+                        Materi Ajar
+                    </button>
+
+
+                    <button
+                        onclick="showSection('media')"
+                        class="
+                            nav-link
+                            text-slate-600
+                            hover:text-blue-600
+                            px-2 py-5
+                            text-sm
+                            font-medium
+                            transition-colors
+                        "
+                    >
+                        Media Inovatif
+                    </button>
+
+
+                    <button
+                        onclick="showSection('praktik')"
+                        class="
+                            nav-link
+                            text-slate-600
+                            hover:text-blue-600
+                            px-2 py-5
+                            text-sm
+                            font-medium
+                            transition-colors
+                        "
+                    >
+                        Praktik PPL
+                    </button>
+
+
+                    <button
+                        onclick="showSection('bina')"
+                        class="
+                            nav-link
+                            text-slate-600
+                            hover:text-blue-600
+                            px-2 py-5
+                            text-sm
+                            font-medium
+                            transition-colors
+                        "
+                    >
+                        Bina Sekolah
+                    </button>
+
+
+                    <button
+                        onclick="showSection('asesmen')"
+                        class="
+                            nav-link
+                            text-slate-600
+                            hover:text-blue-600
+                            px-2 py-5
+                            text-sm
+                            font-medium
+                            transition-colors
+                        "
+                    >
+                        Asesmen
+                    </button>
+
+                </div>
+
+
+                <!-- MOBILE MENU BUTTON -->
+                <div class="flex items-center lg:hidden">
+
+                    <button
+                        onclick="toggleMobileMenu()"
+                        class="
+                            text-slate-600
+                            hover:text-blue-600
+                            focus:outline-none
+                            p-2
+                            bg-slate-50
+                            rounded-md
+                        "
+                        aria-label="Buka menu"
+                    >
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOBILE MENU -->
+        <div
+            id="mobile-menu"
+            class="
+                hidden
+                lg:hidden
+                bg-white
+                border-t
+                border-slate-100
+                shadow-lg
+                absolute
+                w-full
+                left-0
+            "
+        >
+
+            <div class="px-4 pt-2 pb-4 space-y-1">
+
+
+                <button
+                    onclick="showSection('profil'); toggleMobileMenu()"
+                    class="
+                        block
+                        w-full
+                        text-left
+                        px-3 py-3
+                        rounded-md
+                        text-sm
+                        font-medium
+                        text-slate-700
+                        hover:text-blue-600
+                        hover:bg-blue-50
+                        border-b
+                        border-slate-50
+                    "
+                >
+                    Profil
+                </button>
+
+
+                <button
+                    onclick="showSection('modul'); toggleMobileMenu()"
+                    class="
+                        block
+                        w-full
+                        text-left
+                        px-3 py-3
+                        rounded-md
+                        text-sm
+                        font-medium
+                        text-slate-700
+                        hover:text-blue-600
+                        hover:bg-blue-50
+                        border-b
+                        border-slate-50
+                    "
+                >
+                    Modul Ajar
+                </button>
+
+
+                <button
+                    onclick="showSection('materi'); toggleMobileMenu()"
+                    class="
+                        block
+                        w-full
+                        text-left
+                        px-3 py-3
+                        rounded-md
+                        text-sm
+                        font-medium
+                        text-slate-700
+                        hover:text-blue-600
+                        hover:bg-blue-50
+                        border-b
+                        border-slate-50
+                    "
+                >
+                    Materi Ajar
+                </button>
+
+
+                <button
+                    onclick="showSection('media'); toggleMobileMenu()"
+                    class="
+                        block
+                        w-full
+                        text-left
+                        px-3 py-3
+                        rounded-md
+                        text-sm
+                        font-medium
+                        text-slate-700
+                        hover:text-blue-600
+                        hover:bg-blue-50
+                        border-b
+                        border-slate-50
+                    "
+                >
+                    Media Inovatif
+                </button>
+
+
+                <button
+                    onclick="showSection('praktik'); toggleMobileMenu()"
+                    class="
+                        block
+                        w-full
+                        text-left
+                        px-3 py-3
+                        rounded-md
+                        text-sm
+                        font-medium
+                        text-slate-700
+                        hover:text-blue-600
+                        hover:bg-blue-50
+                        border-b
+                        border-slate-50
+                    "
+                >
+                    Praktik PPL
+                </button>
+
+
+                <button
+                    onclick="showSection('bina'); toggleMobileMenu()"
+                    class="
+                        block
+                        w-full
+                        text-left
+                        px-3 py-3
+                        rounded-md
+                        text-sm
+                        font-medium
+                        text-slate-700
+                        hover:text-blue-600
+                        hover:bg-blue-50
+                        border-b
+                        border-slate-50
+                    "
+                >
+                    Bina Sekolah
+                </button>
+
+
+                <button
+                    onclick="showSection('asesmen'); toggleMobileMenu()"
+                    class="
+                        block
+                        w-full
+                        text-left
+                        px-3 py-3
+                        rounded-md
+                        text-sm
+                        font-medium
+                        text-slate-700
+                        hover:text-blue-600
+                        hover:bg-blue-50
+                    "
+                >
+                    Asesmen
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main
+        class="
+            max-w-7xl
+            mx-auto
+            px-4 sm:px-6 lg:px-8
+            py-8 md:py-12
+        "
+    >
+
+
+        <!-- =================================================
+             1. PROFIL
+        ================================================== -->
+
+        <section
+            id="profil"
+            class="section-content active"
+        >
+
+
+            <!-- =========================
+                 HERO
+            ========================== -->
+
+            <div
+                class="
+                    bg-gradient-to-r
+                    from-blue-700
+                    to-blue-500
+                    rounded-2xl
+                    shadow-lg
+                    p-8 md:p-14
+                    text-white
+                    mb-8
+                    relative
+                    overflow-hidden
+                "
+            >
+
+                <!-- Dekorasi -->
+                <div
+                    class="
+                        absolute
+                        top-0
+                        right-0
+                        opacity-10
+                        pointer-events-none
+                        transform
+                        translate-x-1/4
+                        -translate-y-1/4
+                    "
+                >
+                    <i class="fa-solid fa-medal text-9xl"></i>
+                </div>
+
+
+                <div class="relative z-10">
+
+
+                    <span
+                        class="
+                            bg-blue-800/50
+                            text-blue-100
+                            text-xs
+                            font-bold
+                            px-3 py-1
+                            rounded-full
+                            uppercase
+                            tracking-wider
+                            mb-4
+                            inline-block
+                        "
+                    >
+                        Portofolio PPG Prajabatan
+                    </span>
+
+
+                    <h1
+                        class="
+                            text-3xl
+                            md:text-5xl
+                            font-extrabold
+                            mb-4
+                            leading-tight
+                        "
+                    >
+                        Maulana Faqihnafidin, S.Pd.
+                    </h1>
+
+
+                    <p
+                        class="
+                            text-blue-100
+                            text-lg
+                            md:text-xl
+                            max-w-2xl
+                            font-light
+                        "
+                    >
+                        Calon Guru Profesional | PJOK D
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 THREE PROFILE CARDS
+            ========================== -->
+
+            <div
+                class="
+                    grid
+                    grid-cols-1
+                    lg:grid-cols-[0.72fr_1fr_1fr]
+                    gap-8
+                    items-stretch
+                "
+            >
+
+
+                <!-- =================================
+                     FOTO
+                ================================== -->
+
+                <div
+                    class="
+                        profile-photo-card
+                        bg-white
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                        p-6
+                    "
+                >
+
+                    <div class="profile-photo-frame">
+
+                        <img
+                            src="profil.jpeg"
+                            alt="Foto Maulana Faqihnafidin"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     TENTANG SAYA
+                ================================== -->
+
+                <div
+                    class="
+                        bg-white
+                        p-8
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                    "
+                >
+
+                    <div
+                        class="
+                            flex
+                            items-center
+                            mb-6
+                        "
+                    >
+
+                        <div
+                            class="
+                                bg-blue-100
+                                w-12 h-12
+                                rounded-xl
+                                flex
+                                items-center
+                                justify-center
+                                text-blue-600
+                                mr-4
+                                shadow-inner
+                                flex-shrink-0
+                            "
+                        >
+                            <i
+                                class="
+                                    fa-solid
+                                    fa-user-graduate
+                                    text-xl
+                                "
+                            ></i>
+                        </div>
+
+
+                        <h2
+                            class="
+                                text-2xl
+                                font-bold
+                                text-slate-800
+                            "
+                        >
+                            Tentang Saya
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        class="
+                            space-y-4
+                            text-slate-600
+                            leading-relaxed
+                        "
+                    >
+
+                        <p>
+                            Saya adalah lulusan S1 Pendidikan Jasmani,
+                            Kesehatan, dan Rekreasi (PJKR) dari
+                            <strong>
+                                Universitas PGRI Semarang (UPGRIS)
+                            </strong>.
+                            Saat ini, saya tengah mendedikasikan diri
+                            melalui program Pendidikan Profesi Guru (PPG)
+                            Prajabatan dan melaksanakan Praktik Pengalaman
+                            Lapangan (PPL) secara mandiri di
+                            <strong>
+                                SMK Negeri 6 Semarang
+                            </strong>.
+                        </p>
+
+
+                        <p>
+                            Portofolio digital ini disusun sebagai rekam
+                            jejak akademis dan praktis, mendokumentasikan
+                            perencanaan berdiferensiasi, eksekusi lapangan,
+                            hingga asesmen komprehensif dalam mata pelajaran
+                            PJOK.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     FILOSOFI MENGAJAR
+                ================================== -->
+
+                <div
+                    class="
+                        bg-white
+                        p-8
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                    "
+                >
+
+                    <div
+                        class="
+                            flex
+                            items-center
+                            mb-6
+                        "
+                    >
+
+                        <div
+                            class="
+                                bg-emerald-100
+                                w-12 h-12
+                                rounded-xl
+                                flex
+                                items-center
+                                justify-center
+                                text-emerald-600
+                                mr-4
+                                shadow-inner
+                                flex-shrink-0
+                            "
+                        >
+                            <i
+                                class="
+                                    fa-solid
+                                    fa-leaf
+                                    text-xl
+                                "
+                            ></i>
+                        </div>
+
+
+                        <h2
+                            class="
+                                text-2xl
+                                font-bold
+                                text-slate-800
+                            "
+                        >
+                            Filosofi Mengajar
+                        </h2>
+
+                    </div>
+
+
+                    <blockquote
+                        class="
+                            border-l-4
+                            border-emerald-500
+                            pl-5
+                            py-2
+                            text-lg
+                            italic
+                            text-slate-700
+                            mb-6
+                            bg-slate-50/50
+                            rounded-r-xl
+                        "
+                    >
+                        "Pembelajaran PJOK harus adaptif,
+                        berpihak pada murid, dan aman secara psikologis.
+                        Menormalisasi kesalahan sebagai bagian dari proses
+                        belajar adalah kunci menumbuhkan karakter dan
+                        sportivitas."
+                    </blockquote>
+
+
+                    <div
+                        class="
+                            space-y-4
+                            text-slate-600
+                            leading-relaxed
+                        "
+                    >
+
+                        <p>
+                            Dalam lingkungan belajar yang heterogen,
+                            saya meyakini bahwa olahraga bukan semata-mata
+                            tentang kompetisi untuk mencari pemenang.
+                            Melainkan wadah kolaboratif untuk mengeksplorasi
+                            potensi gerak tanpa rasa takut, membangun
+                            karakter kritis, dan menjaga kebugaran
+                            seumur hidup.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             2. MODUL AJAR
+        ================================================== -->
+
+        <section
+            id="modul"
+            class="section-content"
+        >
+
+            <div class="mb-8">
+
+                <h2
+                    class="
+                        text-3xl
+                        font-bold
+                        text-slate-800
+                        mb-2
+                    "
+                >
+                    Perencanaan Berdiferensiasi
+                </h2>
+
+
+                <p class="text-slate-500">
+                    Analisis Rancangan Pelaksanaan Pembelajaran Mandiri
+                    (RPPM) - Softball Kelas XI
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 GRID 12 KOLOM
+                 PDF = 5
+                 ANALISIS = 7
+            ================================================== -->
+
+            <div
+                class="
+                    grid
+                    grid-cols-1
+                    lg:grid-cols-12
+                    gap-8
+                    items-stretch
+                "
+            >
+
+
+                <!-- =========================
+                     PDF
+                ========================== -->
+
+                <div
+                    class="
+                        lg:col-span-5
+                        bg-white
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                        p-6
+                        flex
+                        flex-col
+                    "
+                >
+
+                    <div
+                        class="
+                            flex
+                            flex-col
+                            sm:flex-row
+                            sm:justify-between
+                            sm:items-center
+                            gap-3
+                            mb-4
+                            pb-4
+                            border-b
+                            border-slate-200
+                        "
+                    >
+
+                        <div class="flex items-center">
+
+                            <i
+                                class="
+                                    fa-solid
+                                    fa-file-pdf
+                                    text-red-500
+                                    mr-2
+                                "
+                            ></i>
+
+                            <strong class="text-slate-800">
+                                RPPM Softball.pdf
+                            </strong>
+
+                        </div>
+
+
+                        <a
+                            href="RPPM%20Softball.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="
+                                inline-flex
+                                items-center
+                                justify-center
+                                px-4 py-2
+                                bg-blue-600
+                                text-white
+                                rounded-lg
+                                text-sm
+                                font-medium
+                                hover:bg-blue-700
+                                transition-colors
+                            "
+                        >
+
+                            <i
+                                class="
+                                    fa-solid
+                                    fa-up-right-from-square
+                                    mr-2
+                                "
+                            ></i>
+
+                            Buka Tab Baru
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="flex-1">
+
+                        <iframe
+                            src="RPPM%20Softball.pdf"
+                            title="RPPM Softball"
+                            class="pdf-frame"
+                        >
+
+                            <p class="p-4 text-slate-600">
+                                Browser Anda tidak mendukung pratinjau PDF.
+                                Silakan buka file melalui tombol
+                                "Buka Tab Baru".
+                            </p>
+
+                        </iframe>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     ANALISIS
+                ========================== -->
+
+                <div class="lg:col-span-7">
+
+                    <div
+                        class="
+                            bg-white
+                            p-6 md:p-8
+                            rounded-2xl
+                            shadow-sm
+                            border
+                            border-slate-200
+                            h-full
+                        "
+                    >
+
+                        <h3
+                            class="
+                                text-2xl
+                                font-bold
+                                text-slate-800
+                                mb-6
+                                border-b
+                                pb-4
+                            "
+                        >
+                            Analisis Integrasi
+                            <span class="text-blue-600">
+                                Flexible Pedagogy
+                            </span>
+                        </h3>
+
+
+                        <div class="space-y-7">
+
+
+                            <!-- TaRL -->
+                            <div class="flex">
+
+                                <div
+                                    class="
+                                        flex-shrink-0
+                                        mt-1
+                                    "
+                                >
+
+                                    <div
+                                        class="
+                                            w-10 h-10
+                                            bg-blue-100
+                                            rounded-full
+                                            flex
+                                            items-center
+                                            justify-center
+                                            text-blue-600
+                                        "
+                                    >
+                                        <i
+                                            class="
+                                                fa-solid
+                                                fa-layer-group
+                                            "
+                                        ></i>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="ml-4">
+
+                                    <h4
+                                        class="
+                                            text-lg
+                                            font-bold
+                                            text-slate-800
+                                        "
+                                    >
+                                        Teaching at the Right Level (TaRL)
+                                    </h4>
+
+
+                                    <p
+                                        class="
+                                            text-slate-600
+                                            mt-1
+                                            leading-relaxed
+                                        "
+                                    >
+                                        Rancangan ini mendiferensiasi murid
+                                        ke dalam kelompok berbasis kemampuan
+                                        aktual (dasar, menengah, lanjut)
+                                        hasil dari tes diagnostik awal.
+                                        Diferensiasi diterapkan dengan
+                                        menyesuaikan tingkat tantangan latihan
+                                        dan ukuran/jarak lapangan bermain
+                                        agar sesuai dengan kesiapan tiap
+                                        kelompok.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- CRT -->
+                            <div class="flex">
+
+                                <div
+                                    class="
+                                        flex-shrink-0
+                                        mt-1
+                                    "
+                                >
+
+                                    <div
+                                        class="
+                                            w-10 h-10
+                                            bg-orange-100
+                                            rounded-full
+                                            flex
+                                            items-center
+                                            justify-center
+                                            text-orange-600
+                                        "
+                                    >
+                                        <i
+                                            class="
+                                                fa-solid
+                                                fa-earth-asia
+                                            "
+                                        ></i>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="ml-4">
+
+                                    <h4
+                                        class="
+                                            text-lg
+                                            font-bold
+                                            text-slate-800
+                                        "
+                                    >
+                                        Culturally Responsive Teaching (CRT)
+                                    </h4>
+
+
+                                    <p
+                                        class="
+                                            text-slate-600
+                                            mt-1
+                                            leading-relaxed
+                                        "
+                                    >
+                                        Mengingat softball mungkin terasa
+                                        kompleks, rancangan ini menjadikan
+                                        pengalaman bermain bola kecil
+                                        tradisional (seperti kasti atau
+                                        rounders di lingkungan sekitar)
+                                        sebagai konteks autentik dan jembatan
+                                        apersepsi untuk memahami taktik
+                                        softball.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- UDL -->
+                            <div class="flex">
+
+                                <div
+                                    class="
+                                        flex-shrink-0
+                                        mt-1
+                                    "
+                                >
+
+                                    <div
+                                        class="
+                                            w-10 h-10
+                                            bg-purple-100
+                                            rounded-full
+                                            flex
+                                            items-center
+                                            justify-center
+                                            text-purple-600
+                                        "
+                                    >
+                                        <i
+                                            class="
+                                                fa-solid
+                                                fa-universal-access
+                                            "
+                                        ></i>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="ml-4">
+
+                                    <h4
+                                        class="
+                                            text-lg
+                                            font-bold
+                                            text-slate-800
+                                        "
+                                    >
+                                        Universal Design for Learning
+                                        (DUP/UDL)
+                                    </h4>
+
+
+                                    <p
+                                        class="
+                                            text-slate-600
+                                            mt-1
+                                            leading-relaxed
+                                        "
+                                    >
+                                        Menyediakan variasi cara murid
+                                        mengakses informasi (representasi)
+                                        melalui pemaparan cerita guru,
+                                        pemutaran video, kartu bergambar,
+                                        hingga demonstrasi praktik, guna
+                                        mengakomodasi gaya belajar visual,
+                                        auditori, maupun kinestetik.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             3. MATERI AJAR
+        ================================================== -->
+
+        <section
+            id="materi"
+            class="section-content"
+        >
+
+            <div class="mb-8">
+
+                <h2
+                    class="
+                        text-3xl
+                        font-bold
+                        text-slate-800
+                        mb-2
+                    "
+                >
+                    Materi & Sintaks Pembelajaran
+                </h2>
+
+
+                <p class="text-slate-500">
+                    Pendekatan Teaching Games for Understanding (TGfU)
+                </p>
+
+            </div>
+
+
+            <div
+                class="
+                    grid
+                    grid-cols-1
+                    lg:grid-cols-2
+                    gap-8
+                "
+            >
+
+
+                <!-- ALUR -->
+                <div
+                    class="
+                        bg-white
+                        p-8
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                    "
+                >
+
+                    <h3
+                        class="
+                            text-xl
+                            font-bold
+                            text-slate-800
+                            mb-6
+                            flex
+                            items-center
+                        "
+                    >
+
+                        <i
+                            class="
+                                fa-solid
+                                fa-route
+                                text-blue-500
+                                mr-3
+                            "
+                        ></i>
+
+                        Alur 3 Pertemuan
+
+                    </h3>
+
+
+                    <div
+                        class="
+                            relative
+                            border-l-2
+                            border-blue-200
+                            ml-3
+                            space-y-8
+                        "
+                    >
+
+
+                        <!-- Pertemuan 1 -->
+                        <div class="pl-6 relative">
+
+                            <div
+                                class="
+                                    absolute
+                                    w-4 h-4
+                                    bg-blue-500
+                                    rounded-full
+                                    -left-[9px]
+                                    top-1
+                                "
+                            ></div>
+
+
+                            <h4
+                                class="
+                                    font-bold
+                                    text-lg
+                                    text-slate-800
+                                "
+                            >
+                                Pertemuan 1: Game Form
+                            </h4>
+
+
+                            <p
+                                class="
+                                    text-slate-600
+                                    mt-2
+                                    text-sm
+                                    leading-relaxed
+                                "
+                            >
+                                Murid langsung diajak memainkan bentuk
+                                modifikasi sederhana permainan tanpa
+                                instruksi teknis rumit. Tujuannya adalah
+                                memunculkan <em>Game Appreciation</em> dan
+                                kesadaran terhadap kesulitan atau tantangan
+                                taktik saat bermain.
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- Pertemuan 2 -->
+                        <div class="pl-6 relative">
+
+                            <div
+                                class="
+                                    absolute
+                                    w-4 h-4
+                                    bg-blue-500
+                                    rounded-full
+                                    -left-[9px]
+                                    top-1
+                                "
+                            ></div>
+
+
+                            <h4
+                                class="
+                                    font-bold
+                                    text-lg
+                                    text-slate-800
+                                "
+                            >
+                                Pertemuan 2: Tactical Awareness
+                            </h4>
+
+
+                            <p
+                                class="
+                                    text-slate-600
+                                    mt-2
+                                    text-sm
+                                    leading-relaxed
+                                "
+                            >
+                                Murid menyelidiki masalah yang dirasakan
+                                di pertemuan awal. Fokus pada pengambilan
+                                keputusan (<em>Decision Making</em>):
+                                Kapan harus berlari? Ke mana bola harus
+                                dilempar untuk mempertahankan base?
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- Pertemuan 3 -->
+                        <div class="pl-6 relative">
+
+                            <div
+                                class="
+                                    absolute
+                                    w-4 h-4
+                                    bg-blue-500
+                                    rounded-full
+                                    -left-[9px]
+                                    top-1
+                                "
+                            ></div>
+
+
+                            <h4
+                                class="
+                                    font-bold
+                                    text-lg
+                                    text-slate-800
+                                "
+                            >
+                                Pertemuan 3: Skill Execution
+                            </h4>
+
+
+                            <p
+                                class="
+                                    text-slate-600
+                                    mt-2
+                                    text-sm
+                                    leading-relaxed
+                                "
+                            >
+                                Setelah paham taktik, murid mematangkan
+                                eksekusi keterampilan dasar (memukul,
+                                melempar, menangkap) dan menampilkannya
+                                dalam permainan softball yang lebih utuh
+                                (<em>Performance</em>).
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MATERI ESENSIAL -->
+                <div
+                    class="
+                        bg-slate-800
+                        text-white
+                        p-8
+                        rounded-2xl
+                        shadow-sm
+                        flex
+                        flex-col
+                        justify-between
+                    "
+                >
+
+                    <div>
+
+                        <h3
+                            class="
+                                text-xl
+                                font-bold
+                                mb-6
+                                flex
+                                items-center
+                                text-white
+                            "
+                        >
+
+                            <i
+                                class="
+                                    fa-solid
+                                    fa-book-open
+                                    text-blue-400
+                                    mr-3
+                                "
+                            ></i>
+
+                            Ringkasan Materi Esensial
+
+                        </h3>
+
+
+                        <div class="space-y-4">
+
+
+                            <div
+                                class="
+                                    bg-slate-700/50
+                                    p-4
+                                    rounded-xl
+                                    border
+                                    border-slate-600/50
+                                "
+                            >
+
+                                <h4
+                                    class="
+                                        text-blue-300
+                                        font-bold
+                                        mb-2
+                                        text-sm
+                                        uppercase
+                                        tracking-wider
+                                    "
+                                >
+                                    Fakta & Konsep
+                                </h4>
+
+
+                                <p
+                                    class="
+                                        text-slate-300
+                                        text-sm
+                                        leading-relaxed
+                                    "
+                                >
+                                    Keberhasilan tim penyerang maupun
+                                    bertahan dipengaruhi oleh kesadaran
+                                    taktis dan ketepatan pengambilan
+                                    keputusan, bukan semata-mata
+                                    penguasaan keterampilan teknis.
+                                </p>
+
+                            </div>
+
+
+
+                            <div
+                                class="
+                                    bg-slate-700/50
+                                    p-4
+                                    rounded-xl
+                                    border
+                                    border-slate-600/50
+                                "
+                            >
+
+                                <h4
+                                    class="
+                                        text-emerald-300
+                                        font-bold
+                                        mb-2
+                                        text-sm
+                                        uppercase
+                                        tracking-wider
+                                    "
+                                >
+                                    Prinsip Bermain
+                                </h4>
+
+
+                                <p
+                                    class="
+                                        text-slate-300
+                                        text-sm
+                                        leading-relaxed
+                                    "
+                                >
+                                    Ketepatan membaca posisi lawan,
+                                    menjaga komunikasi antar-penjaga base,
+                                    dan mengatur waktu eksekusi gerakan
+                                    secara kolektif.
+                                </p>
+
+                            </div>
+
+
+
+                            <div
+                                class="
+                                    bg-slate-700/50
+                                    p-4
+                                    rounded-xl
+                                    border
+                                    border-slate-600/50
+                                "
+                            >
+
+                                <h4
+                                    class="
+                                        text-orange-300
+                                        font-bold
+                                        mb-2
+                                        text-sm
+                                        uppercase
+                                        tracking-wider
+                                    "
+                                >
+                                    Prosedur
+                                </h4>
+
+
+                                <p
+                                    class="
+                                        text-slate-300
+                                        text-sm
+                                        leading-relaxed
+                                    "
+                                >
+                                    Bermain (Game Form) →
+                                    Menyelidiki Taktik →
+                                    Menentukan Solusi →
+                                    Berlatih Keterampilan →
+                                    Bermain kembali secara utuh.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             4. MEDIA INOVATIF
+        ================================================== -->
+
+        <section
+            id="media"
+            class="section-content"
+        >
+
+            <div class="mb-8">
+
+                <h2
+                    class="
+                        text-3xl
+                        font-bold
+                        text-slate-800
+                        mb-2
+                    "
+                >
+                    Media Pembelajaran Inovatif
+                </h2>
+
+
+                <p class="text-slate-500">
+                    Analisis Pemanfaatan Sarana Fisik Termodifikasi
+                    dan Integrasi Digital
+                </p>
+
+            </div>
+
+
+            <div class="space-y-4">
+
+
+                <!-- MEDIA FISIK -->
+                <div
+                    class="
+                        bg-white
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                        overflow-hidden
+                    "
+                >
+
+                    <button
+                        onclick="toggleAccordion('acc1', 'icon1')"
+                        class="
+                            w-full
+                            px-6 py-5
+                            text-left
+                            bg-white
+                            hover:bg-slate-50
+                            flex
+                            justify-between
+                            items-center
+                            focus:outline-none
+                            transition-colors
+                        "
+                    >
+
+                        <div class="flex items-center">
+
+                            <div
+                                class="
+                                    w-10 h-10
+                                    bg-blue-100
+                                    rounded-lg
+                                    flex
+                                    items-center
+                                    justify-center
+                                    text-blue-600
+                                    mr-4
+                                    flex-shrink-0
+                                "
+                            >
+                                <i
+                                    class="
+                                        fa-solid
+                                        fa-baseball-bat-ball
+                                    "
+                                ></i>
+                            </div>
+
+
+                            <span
+                                class="
+                                    text-lg
+                                    font-bold
+                                    text-slate-800
+                                "
+                            >
+                                Modifikasi Sarana Fisik di Lapangan
+                            </span>
+
+                        </div>
+
+
+                        <i
+                            id="icon1"
+                            class="
+                                fa-solid
+                                fa-chevron-down
+                                text-slate-400
+                                transition-transform
+                                duration-300
+                            "
+                        ></i>
+
+                    </button>
+
+
+                    <div
+                        id="acc1"
+                        class="
+                            accordion-content
+                            border-t
+                            border-slate-100
+                            bg-slate-50/50
+                        "
+                    >
+
+                        <div
+                            class="
+                                p-6 md:p-8
+                                text-slate-600
+                                leading-relaxed
+                                space-y-4
+                            "
+                        >
+
+                            <p>
+                                Mengajar olahraga bola kecil bagi siswi SMK
+                                seringkali berbenturan dengan faktor
+                                kecemasan (takut terkena bola lemparan).
+                                Untuk memitigasi hal ini sekaligus
+                                menyesuaikan dengan tingkat kemampuan
+                                (TaRL), sarana prasarana dimodifikasi
+                                secara spesifik:
+                            </p>
+
+
+                            <ul
+                                class="
+                                    list-disc
+                                    pl-5
+                                    space-y-2
+                                    text-sm
+                                    md:text-base
+                                "
+                            >
+
+                                <li>
+
+                                    <strong class="text-slate-800">
+                                        Bola Modifikasi:
+                                    </strong>
+
+                                    Menggunakan bola tenis atau bola lunak
+                                    pada tahap perkenalan untuk menurunkan
+                                    risiko cedera dan menghilangkan trauma.
+
+                                </li>
+
+
+                                <li>
+
+                                    <strong class="text-slate-800">
+                                        Bat Ringan:
+                                    </strong>
+
+                                    Pemukul dimodifikasi (lebih pendek/ringan)
+                                    agar sesuai dengan jangkauan dan kekuatan
+                                    lengan siswi pemula.
+
+                                </li>
+
+
+                                <li>
+
+                                    <strong class="text-slate-800">
+                                        Cone Marker:
+                                    </strong>
+
+                                    Penggunaan <em>cone</em> warna-warni
+                                    sebagai penanda <em>base</em> dan batas
+                                    zona aman (<em>safety zone</em>) lari,
+                                    menuntun pemahaman spasial murid.
+
+                                </li>
+
+                            </ul>
+
+
+                            <p
+                                class="
+                                    text-sm
+                                    italic
+                                    bg-white
+                                    p-3
+                                    rounded
+                                    border
+                                    border-slate-200
+                                    border-l-4
+                                    border-l-blue-500
+                                    mt-4
+                                "
+                            >
+                                Analisis: Modifikasi sarana ini terbukti
+                                krusial dalam menekan angka penolakan
+                                berpartisipasi dan meningkatkan
+                                <em>Active Learning Time</em> di lapangan.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MEDIA DIGITAL -->
+                <div
+                    class="
+                        bg-white
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                        overflow-hidden
+                    "
+                >
+
+                    <button
+                        onclick="toggleAccordion('acc2', 'icon2')"
+                        class="
+                            w-full
+                            px-6 py-5
+                            text-left
+                            bg-white
+                            hover:bg-slate-50
+                            flex
+                            justify-between
+                            items-center
+                            focus:outline-none
+                            transition-colors
+                        "
+                    >
+
+                        <div class="flex items-center">
+
+                            <div
+                                class="
+                                    w-10 h-10
+                                    bg-indigo-100
+                                    rounded-lg
+                                    flex
+                                    items-center
+                                    justify-center
+                                    text-indigo-600
+                                    mr-4
+                                    flex-shrink-0
+                                "
+                            >
+                                <i
+                                    class="
+                                        fa-solid
+                                        fa-laptop-code
+                                    "
+                                ></i>
+                            </div>
+
+
+                            <span
+                                class="
+                                    text-lg
+                                    font-bold
+                                    text-slate-800
+                                "
+                            >
+                                Integrasi Teknologi (Media Digital)
+                            </span>
+
+                        </div>
+
+
+                        <i
+                            id="icon2"
+                            class="
+                                fa-solid
+                                fa-chevron-down
+                                text-slate-400
+                                transition-transform
+                                duration-300
+                            "
+                        ></i>
+
+                    </button>
+
+
+                    <div
+                        id="acc2"
+                        class="
+                            accordion-content
+                            border-t
+                            border-slate-100
+                            bg-slate-50/50
+                        "
+                    >
+
+                        <div
+                            class="
+                                p-6 md:p-8
+                                text-slate-600
+                                leading-relaxed
+                                space-y-4
+                            "
+                        >
+
+                            <p>
+                                Sesuai kerangka
+                                <em>Universal Design for Learning</em>
+                                (UDL), pembelajaran PJOK modern wajib
+                                didukung kehadiran teknologi sebagai variasi
+                                stimulus penyampaian materi.
+                            </p>
+
+
+                            <div
+                                class="
+                                    grid
+                                    grid-cols-1
+                                    md:grid-cols-2
+                                    gap-4
+                                    mt-2
+                                "
+                            >
+
+
+                                <!-- VIDEO -->
+                                <div
+                                    class="
+                                        bg-white
+                                        p-4
+                                        rounded-xl
+                                        border
+                                        border-slate-200
+                                        shadow-sm
+                                    "
+                                >
+
+                                    <h4
+                                        class="
+                                            font-bold
+                                            text-slate-800
+                                            mb-2
+                                            text-sm
+                                        "
+                                    >
+
+                                        <i
+                                            class="
+                                                fa-brands
+                                                fa-youtube
+                                                text-red-500
+                                                mr-2
+                                            "
+                                        ></i>
+
+                                        Stimulus Video & Apersepsi
+
+                                    </h4>
+
+
+                                    <p
+                                        class="
+                                            text-sm
+                                            text-slate-600
+                                        "
+                                    >
+                                        Video permainan olahraga digunakan
+                                        pada fase awal agar murid dengan
+                                        gaya belajar visual dapat
+                                        membayangkan taktik softball
+                                        secara konkret.
+                                    </p>
+
+                                </div>
+
+
+
+                                <!-- SMARTPHONE -->
+                                <div
+                                    class="
+                                        bg-white
+                                        p-4
+                                        rounded-xl
+                                        border
+                                        border-slate-200
+                                        shadow-sm
+                                    "
+                                >
+
+                                    <h4
+                                        class="
+                                            font-bold
+                                            text-slate-800
+                                            mb-2
+                                            text-sm
+                                        "
+                                    >
+
+                                        <i
+                                            class="
+                                                fa-solid
+                                                fa-mobile-screen-button
+                                                text-blue-500
+                                                mr-2
+                                            "
+                                        ></i>
+
+                                        Perekaman Gerak (HP)
+
+                                    </h4>
+
+
+                                    <p
+                                        class="
+                                            text-sm
+                                            text-slate-600
+                                        "
+                                    >
+                                        Memanfaatkan kamera
+                                        <em>smartphone</em> untuk merekam
+                                        eksekusi gerak murid, yang kemudian
+                                        digunakan sebagai bahan
+                                        <em>review</em> dan umpan balik
+                                        objektif.
+                                    </p>
+
+                                </div>
+
+
+
+                                <!-- EVALUASI -->
+                                <div
+                                    class="
+                                        bg-white
+                                        p-4
+                                        rounded-xl
+                                        border
+                                        border-slate-200
+                                        shadow-sm
+                                        md:col-span-2
+                                    "
+                                >
+
+                                    <h4
+                                        class="
+                                            font-bold
+                                            text-slate-800
+                                            mb-2
+                                            text-sm
+                                        "
+                                    >
+
+                                        <i
+                                            class="
+                                                fa-solid
+                                                fa-cloud
+                                                text-indigo-500
+                                                mr-2
+                                            "
+                                        ></i>
+
+                                        Evaluasi Digital Interaktif
+
+                                    </h4>
+
+
+                                    <p
+                                        class="
+                                            text-sm
+                                            text-slate-600
+                                        "
+                                    >
+                                        Pemanfaatan LKPD Digital berbasis
+                                        Google Classroom untuk penugasan
+                                        kolaboratif, serta platform
+                                        Quizizz/Kahoot untuk evaluasi
+                                        kognitif (aturan main & taktik)
+                                        guna memaksimalkan antusiasme
+                                        murid pasca-praktik.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             5. PRAKTIK PPL
+        ================================================== -->
+
+        <section
+            id="praktik"
+            class="section-content"
+        >
+
+            <div class="mb-8">
+
+                <h2
+                    class="
+                        text-3xl
+                        font-bold
+                        text-slate-800
+                        mb-2
+                    "
+                >
+                    Pelaksanaan Praktik PPL
+                </h2>
+
+
+                <p class="text-slate-500">
+                    Video Dokumentasi Pertemuan Pertama &
+                    Analisis Manajemen Kelas
+                </p>
+
+            </div>
+
+
+            <!-- VIDEO -->
+            <div
+                class="
+                    bg-black
+                    rounded-2xl
+                    shadow-lg
+                    overflow-hidden
+                    mb-8
+                    max-w-4xl
+                    mx-auto
+                    border
+                    border-slate-200
+                "
+            >
+
+                <div
+                    class="relative w-full"
+                    style="padding-bottom: 56.25%;"
+                >
+
+                    <iframe
+                        class="
+                            absolute
+                            top-0
+                            left-0
+                            w-full
+                            h-full
+                        "
+                        src="https://www.youtube.com/embed/lNY7-M2n308"
+                        title="Praktik Mengajar PJOK Maulana Faqihnafidin"
+                        frameborder="0"
+                        allow="
+                            accelerometer;
+                            autoplay;
+                            clipboard-write;
+                            encrypted-media;
+                            gyroscope;
+                            picture-in-picture
+                        "
+                        allowfullscreen
+                    ></iframe>
+
+                </div>
+
+            </div>
+
+
+            <!-- ANALISIS -->
+            <div
+                class="
+                    grid
+                    grid-cols-1
+                    md:grid-cols-2
+                    gap-6
+                "
+            >
+
+
+                <!-- REFLEKSI -->
+                <div
+                    class="
+                        bg-white
+                        p-6
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                    "
+                >
+
+                    <h3
+                        class="
+                            text-xl
+                            font-bold
+                            text-slate-800
+                            mb-4
+                            border-b
+                            pb-2
+                            flex
+                            items-center
+                        "
+                    >
+
+                        <i
+                            class="
+                                fa-solid
+                                fa-video
+                                text-blue-500
+                                mr-2
+                            "
+                        ></i>
+
+                        Refleksi Pelaksanaan
+
+                    </h3>
+
+
+                    <p
+                        class="
+                            text-slate-600
+                            text-sm
+                            leading-relaxed
+                            mb-3
+                        "
+                    >
+                        Video di atas mendokumentasikan keseluruhan
+                        <strong>
+                            Pertemuan Pertama (Game Form)
+                        </strong>.
+                        Kelas diawali dengan apersepsi yang menjembatani
+                        aturan Softball dengan permainan kasti.
+                    </p>
+
+
+                    <p
+                        class="
+                            text-slate-600
+                            text-sm
+                            leading-relaxed
+                            mb-3
+                        "
+                    >
+                        Pemanasan dirancang kooperatif menggunakan estafet
+                        lari <em>cone</em> antar barisan. Hal ini terbukti
+                        menaikkan denyut nadi (warm-up) sekaligus menciptakan
+                        <em>mood</em> menggembirakan sebelum masuk ke latihan
+                        lempar-tangkap dasar berpasangan.
+                    </p>
+
+                </div>
+
+
+
+                <!-- MITIGASI -->
+                <div
+                    class="
+                        bg-white
+                        p-6
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                    "
+                >
+
+                    <h3
+                        class="
+                            text-xl
+                            font-bold
+                            text-slate-800
+                            mb-4
+                            border-b
+                            pb-2
+                            flex
+                            items-center
+                        "
+                    >
+
+                        <i
+                            class="
+                                fa-solid
+                                fa-shield-halved
+                                text-emerald-500
+                                mr-2
+                            "
+                        ></i>
+
+                        Mitigasi Risiko & Manajemen
+
+                    </h3>
+
+
+                    <p
+                        class="
+                            text-slate-600
+                            text-sm
+                            leading-relaxed
+                            mb-3
+                        "
+                    >
+                        Menghadapi kelas mayoritas perempuan, instruksi
+                        diberikan secara tegas namun empatik guna mengubah
+                        orientasi dari kompetisi agresif menjadi kolaborasi.
+                    </p>
+
+
+                    <p
+                        class="
+                            text-slate-600
+                            text-sm
+                            leading-relaxed
+                        "
+                    >
+
+                        <strong>
+                            Modifikasi Aturan Khusus:
+                        </strong>
+
+                        Untuk memitigasi ketakutan cedera, aturan mematikan
+                        lawan dimodifikasi. Penjaga <em>tidak boleh</em>
+                        melempar bola langsung ke badan pelari, melainkan
+                        harus mengoper bola ke teman di <em>base</em>.
+                        Modifikasi ini sukses besar menciptakan rasa aman,
+                        menuntut komunikasi penjaga, dan memastikan
+                        partisipasi 100%.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             6. BINA SEKOLAH
+        ================================================== -->
+
+        <section
+            id="bina"
+            class="section-content"
+        >
+
+            <div class="mb-8">
+
+                <h2
+                    class="
+                        text-3xl
+                        font-bold
+                        text-slate-800
+                        mb-2
+                    "
+                >
+                    Kegiatan Nonmengajar & Bina Sekolah
+                </h2>
+
+
+                <p class="text-slate-500">
+                    Kontribusi Manajerial, Pembiasaan Karakter,
+                    dan Profesionalitas
+                </p>
+
+            </div>
+
+
+            <div
+                class="
+                    bg-white
+                    rounded-2xl
+                    shadow-sm
+                    border
+                    border-slate-200
+                    p-8
+                "
+            >
+
+                <div
+                    class="
+                        max-w-3xl
+                        mx-auto
+                        space-y-8
+                        relative
+                        before:absolute
+                        before:inset-0
+                        before:ml-5
+                        before:-translate-x-px
+                        md:before:mx-auto
+                        md:before:translate-x-0
+                        before:h-full
+                        before:w-0.5
+                        before:bg-gradient-to-b
+                        before:from-blue-500
+                        before:to-transparent
+                    "
+                >
+
+
+                    <!-- ITEM 1 -->
+                    <div
+                        class="
+                            relative
+                            flex
+                            items-center
+                            justify-between
+                            md:justify-normal
+                            md:odd:flex-row-reverse
+                            group
+                            is-active
+                        "
+                    >
+
+                        <div
+                            class="
+                                flex
+                                items-center
+                                justify-center
+                                w-10 h-10
+                                rounded-full
+                                border-4
+                                border-white
+                                bg-blue-500
+                                text-white
+                                shadow
+                                shrink-0
+                                md:order-1
+                                md:group-odd:-translate-x-1/2
+                                md:group-even:translate-x-1/2
+                                z-10
+                            "
+                        >
+                            <i
+                                class="fa-solid fa-hands-praying"
+                            ></i>
+                        </div>
+
+
+                        <div
+                            class="
+                                w-[calc(100%-4rem)]
+                                md:w-[calc(50%-2.5rem)]
+                                p-4
+                                rounded-xl
+                                border
+                                border-slate-200
+                                bg-slate-50
+                                shadow-sm
+                            "
+                        >
+
+                            <h3
+                                class="
+                                    font-bold
+                                    text-slate-800
+                                    text-lg
+                                    mb-1
+                                "
+                            >
+                                Ko-kurikuler & Pembiasaan
+                            </h3>
+
+
+                            <p
+                                class="
+                                    text-slate-600
+                                    text-sm
+                                    leading-relaxed
+                                "
+                            >
+                                Terlibat aktif dalam memimpin dan
+                                mendokumentasikan rutinitas pembiasaan
+                                positif di kelas SMK N 6 Semarang,
+                                meliputi doa bersama, melantunkan Asmaul
+                                Husna, serta penanaman jiwa nasionalisme
+                                melalui lagu Indonesia Raya dan Mars
+                                sekolah. Terlihat nyata di awal
+                                dokumentasi PPL.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ITEM 2 -->
+                    <div
+                        class="
+                            relative
+                            flex
+                            items-center
+                            justify-between
+                            md:justify-normal
+                            md:odd:flex-row-reverse
+                            group
+                            is-active
+                        "
+                    >
+
+                        <div
+                            class="
+                                flex
+                                items-center
+                                justify-center
+                                w-10 h-10
+                                rounded-full
+                                border-4
+                                border-white
+                                bg-emerald-500
+                                text-white
+                                shadow
+                                shrink-0
+                                md:order-1
+                                md:group-odd:-translate-x-1/2
+                                md:group-even:translate-x-1/2
+                                z-10
+                            "
+                        >
+                            <i
+                                class="fa-solid fa-users"
+                            ></i>
+                        </div>
+
+
+                        <div
+                            class="
+                                w-[calc(100%-4rem)]
+                                md:w-[calc(50%-2.5rem)]
+                                p-4
+                                rounded-xl
+                                border
+                                border-slate-200
+                                bg-slate-50
+                                shadow-sm
+                            "
+                        >
+
+                            <h3
+                                class="
+                                    font-bold
+                                    text-slate-800
+                                    text-lg
+                                    mb-1
+                                "
+                            >
+                                Pembinaan Ekstrakurikuler
+                            </h3>
+
+
+                            <p
+                                class="
+                                    text-slate-600
+                                    text-sm
+                                    leading-relaxed
+                                "
+                            >
+                                Mendampingi kegiatan ekstrakurikuler unit
+                                olahraga. Memberikan pendampingan
+                                manajemen latihan, merancang periodisasi
+                                sederhana, serta mengevaluasi perkembangan
+                                bakat spesifik siswa di luar jam KBM
+                                reguler.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ITEM 3 -->
+                    <div
+                        class="
+                            relative
+                            flex
+                            items-center
+                            justify-between
+                            md:justify-normal
+                            md:odd:flex-row-reverse
+                            group
+                            is-active
+                        "
+                    >
+
+                        <div
+                            class="
+                                flex
+                                items-center
+                                justify-center
+                                w-10 h-10
+                                rounded-full
+                                border-4
+                                border-white
+                                bg-purple-500
+                                text-white
+                                shadow
+                                shrink-0
+                                md:order-1
+                                md:group-odd:-translate-x-1/2
+                                md:group-even:translate-x-1/2
+                                z-10
+                            "
+                        >
+                            <i
+                                class="fa-solid fa-clipboard-check"
+                            ></i>
+                        </div>
+
+
+                        <div
+                            class="
+                                w-[calc(100%-4rem)]
+                                md:w-[calc(50%-2.5rem)]
+                                p-4
+                                rounded-xl
+                                border
+                                border-slate-200
+                                bg-slate-50
+                                shadow-sm
+                            "
+                        >
+
+                            <h3
+                                class="
+                                    font-bold
+                                    text-slate-800
+                                    text-lg
+                                    mb-1
+                                "
+                            >
+                                Manajerial & Kultur Kerja
+                            </h3>
+
+
+                            <p
+                                class="
+                                    text-slate-600
+                                    text-sm
+                                    leading-relaxed
+                                "
+                            >
+                                Berkolaborasi dengan Guru Pamong dalam tugas
+                                manajerial fasilitas olahraga, melaksanakan
+                                piket ketertiban sekolah menyambut kedatangan
+                                siswa, serta berinteraksi profesional di
+                                lingkungan kerja untuk memperkuat kompetensi
+                                sosial-kepribadian.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             7. ASESMEN
+        ================================================== -->
+
+        <section
+            id="asesmen"
+            class="section-content"
+        >
+
+            <div class="mb-8">
+
+                <h2
+                    class="
+                        text-3xl
+                        font-bold
+                        text-slate-800
+                        mb-2
+                    "
+                >
+                    Instrumen Asesmen & Evaluasi
+                </h2>
+
+
+                <p class="text-slate-500">
+                    Pemetaan Awal, Observasi Sikap, dan Rubrik Keterampilan
+                </p>
+
+            </div>
+
+
+            <div class="space-y-8">
+
+
+                <!-- =================================
+                     DIAGNOSTIK
+                ================================== -->
+
+                <div
+                    class="
+                        bg-white
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                        overflow-hidden
+                    "
+                >
+
+                    <div
+                        class="
+                            bg-blue-50
+                            border-b
+                            border-slate-200
+                            px-6 py-4
+                        "
+                    >
+
+                        <h3 class="font-bold text-blue-800">
+                            1. Asesmen Diagnostik (Pemetaan Awal)
+                        </h3>
+
+                    </div>
+
+
+                    <div class="overflow-x-auto p-6">
+
+                        <table
+                            class="
+                                w-full
+                                text-sm
+                                text-left
+                                text-slate-600
+                            "
+                        >
+
+                            <thead
+                                class="
+                                    text-xs
+                                    text-slate-700
+                                    uppercase
+                                    bg-slate-100
+                                "
+                            >
+
+                                <tr>
+
+                                    <th
+                                        class="
+                                            px-4 py-3
+                                            rounded-tl-lg
+                                        "
+                                    >
+                                        Aspek Profiling
+                                    </th>
+
+
+                                    <th class="px-4 py-3">
+                                        Teknik
+                                    </th>
+
+
+                                    <th
+                                        class="
+                                            px-4 py-3
+                                            rounded-tr-lg
+                                        "
+                                    >
+                                        Implikasi Pembelajaran
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+
+                                <tr
+                                    class="
+                                        border-b
+                                        border-slate-100
+                                    "
+                                >
+
+                                    <td
+                                        class="
+                                            px-4 py-3
+                                            font-medium
+                                            text-slate-800
+                                        "
+                                    >
+                                        Pengalaman Bermain
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Angket & Wawancara
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Guru menggali pengalaman kasti
+                                        siswa sebagai apersepsi (CRT).
+                                    </td>
+
+                                </tr>
+
+
+
+                                <tr
+                                    class="
+                                        border-b
+                                        border-slate-100
+                                    "
+                                >
+
+                                    <td
+                                        class="
+                                            px-4 py-3
+                                            font-medium
+                                            text-slate-800
+                                        "
+                                    >
+                                        Gaya Belajar Dominan
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Angket Singkat
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Penyediaan variasi media
+                                        (Visual, Auditori, Praktik)
+                                        sesuai UDL.
+                                    </td>
+
+                                </tr>
+
+
+
+                                <tr
+                                    class="
+                                        border-b
+                                        border-slate-100
+                                    "
+                                >
+
+                                    <td
+                                        class="
+                                            px-4 py-3
+                                            font-medium
+                                            text-slate-800
+                                        "
+                                    >
+                                        Kesiapan Aktual
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Observasi Awal
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Pembagian kelompok dan modifikasi
+                                        alat (TaRL).
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     PSIKOMOTOR
+                ================================== -->
+
+                <div
+                    class="
+                        bg-white
+                        rounded-2xl
+                        shadow-sm
+                        border
+                        border-slate-200
+                        overflow-hidden
+                    "
+                >
+
+                    <div
+                        class="
+                            bg-emerald-50
+                            border-b
+                            border-slate-200
+                            px-6 py-4
+                        "
+                    >
+
+                        <h3 class="font-bold text-emerald-800">
+                            2. Asesmen Sumatif
+                            (Unjuk Kerja/Keterampilan)
+                        </h3>
+
+                    </div>
+
+
+                    <div class="overflow-x-auto p-6">
+
+                        <table
+                            class="
+                                w-full
+                                text-sm
+                                text-left
+                                text-slate-600
+                                min-w-[700px]
+                            "
+                        >
+
+                            <thead
+                                class="
+                                    text-xs
+                                    text-slate-700
+                                    uppercase
+                                    bg-slate-100
+                                "
+                            >
+
+                                <tr>
+
+                                    <th class="px-4 py-3 w-1/4">
+                                        Aspek Penilaian
+                                    </th>
+
+
+                                    <th class="px-4 py-3 w-1/4">
+                                        Skor 4 (Sangat Baik)
+                                    </th>
+
+
+                                    <th class="px-4 py-3 w-1/4">
+                                        Skor 3 (Baik)
+                                    </th>
+
+
+                                    <th class="px-4 py-3 w-1/4">
+                                        Skor 2 (Cukup)
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+
+                                <tr
+                                    class="
+                                        border-b
+                                        border-slate-100
+                                    "
+                                >
+
+                                    <td
+                                        class="
+                                            px-4 py-3
+                                            font-bold
+                                            text-slate-800
+                                        "
+                                    >
+                                        Skill Execution
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Gerak memukul, melempar, menangkap
+                                        dilakukan benar, lincah,
+                                        terkoordinasi.
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Gerak benar tetapi kurang lincah.
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Gerak kurang tepat dan kurang
+                                        terkoordinasi.
+                                    </td>
+
+                                </tr>
+
+
+
+                                <tr
+                                    class="
+                                        border-b
+                                        border-slate-100
+                                    "
+                                >
+
+                                    <td
+                                        class="
+                                            px-4 py-3
+                                            font-bold
+                                            text-slate-800
+                                        "
+                                    >
+                                        Decision Making
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Mengambil keputusan taktis secara
+                                        tepat dan konsisten.
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Mengambil keputusan tepat pada
+                                        sebagian besar situasi.
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Kadang mengambil keputusan yang
+                                        sesuai.
+                                    </td>
+
+                                </tr>
+
+
+
+                                <tr
+                                    class="
+                                        border-b
+                                        border-slate-100
+                                    "
+                                >
+
+                                    <td
+                                        class="
+                                            px-4 py-3
+                                            font-bold
+                                            text-slate-800
+                                        "
+                                    >
+                                        Penerapan Permainan
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Menerapkan taktik dan keterampilan
+                                        konsisten dalam game utuh.
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Menerapkan pada sebagian besar
+                                        situasi.
+                                    </td>
+
+
+                                    <td class="px-4 py-3">
+                                        Kadang menerapkan taktik yang
+                                        sesuai.
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     AFEKTIF + REFLEKSI
+                ================================== -->
+
+                <div
+                    class="
+                        grid
+                        grid-cols-1
+                        md:grid-cols-2
+                        gap-6
+                    "
+                >
+
+
+                    <!-- AFEKTIF -->
+                    <div
+                        class="
+                            bg-white
+                            p-6
+                            rounded-2xl
+                            shadow-sm
+                            border
+                            border-slate-200
+                        "
+                    >
+
+                        <h3
+                            class="
+                                font-bold
+                                text-purple-800
+                                mb-3
+                                border-b
+                                pb-2
+                            "
+                        >
+                            3. Asesmen Afektif (Sikap)
+                        </h3>
+
+
+                        <p
+                            class="
+                                text-sm
+                                text-slate-600
+                                mb-4
+                            "
+                        >
+                            Observasi difokuskan pada nilai Profil
+                            Pelajar Pancasila selama KBM:
+                        </p>
+
+
+                        <ul
+                            class="
+                                space-y-3
+                                text-sm
+                                text-slate-700
+                            "
+                        >
+
+                            <li class="flex items-start">
+
+                                <i
+                                    class="
+                                        fa-solid
+                                        fa-check
+                                        text-green-500
+                                        mt-1
+                                        mr-2
+                                    "
+                                ></i>
+
+                                <span>
+                                    <strong>Disiplin:</strong>
+                                    Mengikuti instruksi dan aturan
+                                    keselamatan.
+                                </span>
+
+                            </li>
+
+
+                            <li class="flex items-start">
+
+                                <i
+                                    class="
+                                        fa-solid
+                                        fa-check
+                                        text-green-500
+                                        mt-1
+                                        mr-2
+                                    "
+                                ></i>
+
+                                <span>
+                                    <strong>Kerja Sama:</strong>
+                                    Berpartisipasi aktif dalam taktik tim.
+                                </span>
+
+                            </li>
+
+
+                            <li class="flex items-start">
+
+                                <i
+                                    class="
+                                        fa-solid
+                                        fa-check
+                                        text-green-500
+                                        mt-1
+                                        mr-2
+                                    "
+                                ></i>
+
+                                <span>
+                                    <strong>Tanggung Jawab:</strong>
+                                    Menyelesaikan tugas penyelidikan.
+                                </span>
+
+                            </li>
+
+
+                            <li class="flex items-start">
+
+                                <i
+                                    class="
+                                        fa-solid
+                                        fa-check
+                                        text-green-500
+                                        mt-1
+                                        mr-2
+                                    "
+                                ></i>
+
+                                <span>
+                                    <strong>Menghargai:</strong>
+                                    Menerima perbedaan kemampuan teman.
+                                </span>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+
+                    <!-- REFLEKSI -->
+                    <div
+                        class="
+                            bg-white
+                            p-6
+                            rounded-2xl
+                            shadow-sm
+                            border
+                            border-slate-200
+                        "
+                    >
+
+                        <h3
+                            class="
+                                font-bold
+                                text-orange-800
+                                mb-3
+                                border-b
+                                pb-2
+                            "
+                        >
+                            4. Refleksi & Penilaian Diri
+                        </h3>
+
+
+                        <p
+                            class="
+                                text-sm
+                                text-slate-600
+                                mb-4
+                            "
+                        >
+                            Penggunaan instrumen formatif untuk menumbuhkan
+                            <em>Growth Mindset</em> murid di akhir
+                            pertemuan:
+                        </p>
+
+
+                        <ul
+                            class="
+                                space-y-2
+                                text-sm
+                                text-slate-700
+                                italic
+                                border-l-4
+                                border-slate-300
+                                pl-3
+                            "
+                        >
+
+                            <li>
+                                "Hal yang paling saya kuasai hari ini
+                                adalah..."
+                            </li>
+
+
+                            <li>
+                                "Taktik yang paling membantu tim saya
+                                adalah..."
+                            </li>
+
+
+                            <li>
+                                "Keterampilan yang masih perlu saya
+                                perbaiki..."
+                            </li>
+
+
+                            <li>
+                                "Rencana saya untuk permainan berikutnya..."
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer
+        class="
+            bg-slate-900
+            text-slate-400
+            py-8
+            text-center
+            text-sm
+        "
+    >
+
+        <p>
+            &copy; 2026 E-Portfolio Maulana Faqihnafidin, S.Pd.
+            | PPG Prajabatan.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           SECTION NAVIGATION
+        ====================================================== */
+
+        function showSection(sectionId) {
+
+            /*
+             * Sembunyikan seluruh section.
+             */
+            const sections =
+                document.querySelectorAll(
+                    '.section-content'
+                );
+
+
+            sections.forEach(section => {
+
+                section.classList.remove('active');
+
+            });
+
+
+            /*
+             * Tampilkan section yang dipilih.
+             */
+            const targetSection =
+                document.getElementById(sectionId);
+
+
+            if (targetSection) {
+
+                targetSection.classList.add('active');
+
+            }
+
+
+            /*
+             * Update status navbar.
+             */
+            const navLinks =
+                document.querySelectorAll(
+                    '.nav-link'
+                );
+
+
+            navLinks.forEach(link => {
+
+                link.classList.remove('active');
+
+
+                const onclickValue =
+                    link.getAttribute('onclick');
+
+
+                if (
+                    onclickValue &&
+                    onclickValue.includes(
+                        "showSection('" +
+                        sectionId +
+                        "')"
+                    )
+                ) {
+
+                    link.classList.add('active');
+
+                }
+
+            });
+
+
+            /*
+             * Kembali ke bagian atas halaman.
+             */
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+        }
+
+
+
+        /* =====================================================
+           MOBILE MENU
+        ====================================================== */
+
+        function toggleMobileMenu() {
+
+            const menu =
+                document.getElementById(
+                    'mobile-menu'
+                );
+
+
+            menu.classList.toggle('hidden');
+
+        }
+
+
+
+        /* =====================================================
+           ACCORDION
+        ====================================================== */
+
+        function toggleAccordion(
+            contentId,
+            iconId
+        ) {
+
+            const content =
+                document.getElementById(
+                    contentId
+                );
+
+
+            const icon =
+                document.getElementById(
+                    iconId
+                );
+
+
+            const isOpen =
+                content.style.maxHeight &&
+                content.style.maxHeight !== '0px';
+
+
+            if (isOpen) {
+
+                /*
+                 * Tutup accordion.
+                 */
+                content.style.maxHeight = null;
+
+                content.style.paddingTop = null;
+
+                content.style.paddingBottom = null;
+
+                icon.style.transform =
+                    'rotate(0deg)';
+
+            } else {
+
+                /*
+                 * Buka accordion.
+                 */
+                content.style.maxHeight =
+                    content.scrollHeight + 'px';
+
+                content.style.paddingTop =
+                    '1rem';
+
+                content.style.paddingBottom =
+                    '1rem';
+
+                icon.style.transform =
+                    'rotate(180deg)';
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           INITIALIZATION
+        ====================================================== */
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            function () {
+
+                /*
+                 * Halaman awal = Profil.
+                 */
+                showSection('profil');
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
